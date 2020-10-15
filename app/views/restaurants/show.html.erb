@@ -6,6 +6,15 @@
     <h2><%= @restaurant.address %></h2>
     <h2><%= @restaurant.phone_number %></h2>
     <br>
+    <ul class="list-group">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="list-group-item"><%= review.content %> <%= '⭐'* review.rating %></li>
+      <% end %>
+    </ul>
+
+    <br>
+     <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-primary" %>
+     <%= link_to "Leave a review", new_restaurant_review_path(@restaurant), class: "btn btn-success" %>
     <%= link_to 'Delete this restaurant', restaurant_path,
               data: {:confirm => 'Are you sure?'}, :method => :delete , class: "btn btn-danger"%>
 
