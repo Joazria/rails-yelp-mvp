@@ -3,6 +3,9 @@
     <h1>Restaurants Listing</h1>
       <% @restaurants.each do |restaurant| %>
         <h1><%= restaurant.name %></h1>
+        <% unless restaurant.reviews.empty? %>
+          <h3>  <%= '⭐' * restaurant.reviews.last.rating %></h3>
+        <% end %>
         <h2><%= restaurant.category %></h2>
         <%= link_to 'show restaurant details', restaurant_path(restaurant), class: "btn btn-primary" %>
         <br>
